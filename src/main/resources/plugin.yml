@@ -1,0 +1,34 @@
+name: ZyrenAuth
+main: com.pheonix.zyrenauth.ZyrenAuthPlugin
+version: 1.0.0
+api-version: '1.21'
+author: _Pheonix
+description: Advanced auth system with MySQL and optional email support
+
+commands:
+  register:
+    description: Register a new ZyrenAuth account
+    usage: "/register <password> <confirm_password>"
+  login:
+    description: Log in to your ZyrenAuth account
+    usage: "/login <password>"
+  addemail:
+    description: Add an email to your ZyrenAuth account"
+    usage: "/addemail <email>"
+  emailconfirm:
+    description: Confirm your email with a token"
+    usage: "/emailconfirm <token>"
+  resetpassword:
+    description: Request a password reset"
+    usage: "/resetpassword"
+  resetconfirm:
+    description: Confirm password reset"
+    usage: "/resetconfirm <token> <new_password> <confirm_new_password>"
+  za:
+    description: ZyrenAuth info and admin commands
+    usage: "/za <help|status|reload>"
+
+permissions:
+  zyrenauth.admin:
+    description: Allows using ZyrenAuth admin commands (/za status, /za reload)
+    default: op

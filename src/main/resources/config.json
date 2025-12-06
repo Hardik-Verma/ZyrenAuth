@@ -1,0 +1,34 @@
+{
+  "mysqlHost": "127.0.0.1",
+  "mysqlPort": "2040",
+  "mysqlDatabase": "zyrenauth",
+  "mysqlUser": "zyrenauth",
+  "mysqlPassword": "ZyrenAuth@0212",
+
+  "smtpHost": "smtp.gmail.com",
+  "smtpPort": "587",
+  "smtpUsername": "hardikverma1902@gmail.com",
+  "smtpPassword": "zjul uznx qjjc unun",
+  "smtpAuth": true,
+  "smtpStarttlsEnable": true,
+  "emailSenderAddress": "hardikverma1902@gmail.com",
+
+  "minPasswordLength": 8,
+  "requireDigit": true,
+  "requireLowercase": true,
+  "requireUppercase": true,
+  "requireSpecialChar": true,
+
+  "bcryptStrength": 12,
+
+  "maxLoginAttempts": 5,
+  "lockoutDurationSeconds": 300,
+
+  "antiAccountSharingEnabled": true,
+  "ipDeviceLockingEnabled": true,
+
+  "emailConfirmationExpiryMinutes": 30,
+  "passwordResetExpiryMinutes": 60,
+
+  "webServerUrl": "http://localhost:8080/zyrenauth"
+}

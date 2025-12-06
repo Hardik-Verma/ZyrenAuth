@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.pheonix'
+version = '1.0.0'
+description = 'ZyrenAuth Paper plugin'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+
+    maven {
+        name = "papermc-repo"
+        url = uri("https://repo.papermc.io/repository/maven-public/")
+    }
+
+    mavenLocal()
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT"
+
+    implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'com.sun.mail:jakarta.mail:2.0.1'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'com.google.code.gson:gson:2.10.1'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
