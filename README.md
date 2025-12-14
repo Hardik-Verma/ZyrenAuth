@@ -1,8 +1,22 @@
-# **ZyrenAuth**
+# ZyrenAuth – Minecraft Authentication & Login Security Plugin
 
-A **secure and smart authentication plugin/mod** for **Minecraft 1.21.1+ servers**, made by **_Pheonix** (Website and app development). ZyrenAuth brings robust account protection, player privacy, and an intuitive login experience to both **Paper** and **Fabric** server environments.
+ZyrenAuth is a secure authentication and login protection plugin
+for Minecraft Paper and Fabric servers (1.21.1+).
+
+It provides account security, password protection, and a smooth
+login experience for modern Minecraft servers.
 
 ---
+
+🔐 Features:
+- Secure player authentication
+- Offline & online mode support
+- BCrypt password hashing
+- MySQL / file-based storage
+- Optional email verification
+
+📥 Download:
+https://modrinth.com/plugin/zyrenauth
 
 ## **Features**
 
