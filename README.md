@@ -1,78 +1,89 @@
-# ZyrenAuth – Minecraft Authentication & Login Security Plugin
+# ZyrenAuth – Secure Minecraft Authentication & Login Security Plugin
 
-ZyrenAuth is a secure authentication and login protection plugin
-for Minecraft Paper and Fabric servers (1.21.1+).
+ZyrenAuth is a modern, robust, and privacy-focused authentication plugin/mod for Minecraft 1.21.1+ servers. Developed by _Pheonix, it provides strong account protection, seamless login experiences, and advanced security features for both Paper and Fabric server environments.
 
-It provides account security, password protection, and a smooth
-login experience for modern Minecraft servers.
+🔗 **Visit our Official Website for more details & an interactive Config Generator:** [https://zyrenauth.wuaze.com/](https://zyrenauth.wuaze.com/)
 
 ---
 
-🔐 Features:
-- Secure player authentication
-- Offline & online mode support
-- BCrypt password hashing
-- MySQL / file-based storage
-- Optional email verification
+## ✨ Features
 
-📥 Download:
-https://modrinth.com/plugin/zyrenauth
-
-## **Features**
-
+*   **Dynamic On-Screen Authentication Prompts:** Players receive clear, persistent on-screen titles and subtitles for `/register` and `/login` commands, guiding them through authentication seamlessly until successfully logged in.
+*   **Optional Two-Factor Authentication (2FA) via Google Authenticator:** Players can enable 2FA for an extra layer of security. Easy setup; becomes compulsory for that player's future logins once enabled. Compatible with popular authenticator apps.
 *   **Smart Player Authentication:**
-    * Supports both offline and online servers with a smart authentication system.
-*   **Secure Logins:** Uses BCrypt for password hashing and validates usernames.
-*   **Private Join:** Teleports players to a safe login area in world spawn, hiding their real location until they authenticate.
-*   **Flexible Storage:** Supports **MySQL/MariaDB** for persistent data, or a simple **file-based fallback** (`accounts.json`).
-*   **Optional Email:** Features like email confirmation and password reset (requires MySQL + SMTP).
-*   **Admin Tools:** `/za` command for status, help, and config reload.
+    *   **For Online-Mode Servers (`online-mode=true`):** Automatically registers and logs in legitimate Minecraft accounts. No manual `/register` is required, and usernames are automatically updated.
+    *   **For Servers in Alternative Authentication Modes (`online-mode=false`):** Registered players are automatically logged in. Unregistered players must register to ensure account security.
+*   **Secure Logins:** Utilizes strong BCrypt password hashing and robust username validation.
+*   **Private Join & Configurable Auth Spawn:** Players are safely teleported to a hidden, configurable authentication spawn (e.g., `spawnX, spawnY, spawnZ`) upon joining, protecting their real location until authenticated.
+*   **Flexible Storage:** Full support for **MySQL/MariaDB** for persistent, scalable data, with improved internal handling for encrypted file-based accounts (`accounts.json`) as a robust fallback.
+*   **Optional Email Features:** Supports email confirmation and password reset functionalities (requires MySQL and SMTP configuration).
+*   **Improved Admin & Player Commands:** Unified `/za` admin command (alias for `/zyrenauthadmin`), revamped `/za help` and `/za status` with clearer, aesthetic chat-box layouts, and integrated 2FA subcommands.
+*   **Robust File-Based Storage Enhancements:** Improved internal handling for encrypted file-based accounts, ensuring better data integrity and reliability.
+*   **Graceful Error Handling:** Enhanced logging and clearer error messages for a smoother experience for both players and server administrators.
+*   **Streamlined File Management:** All plugin files (<code>config.json</code>, <code>accounts.json</code>, <code>secret.key</code>, <code>data/</code>, <code>logs/</code>) are now organized under <code>server_root/plugins/config/zyrenauth/</code> for cleaner server directories.
 
 ---
 
-## **Supported**
+## 🚀 Supported Platforms
 
--   **Paper:** 1.21.1+ (Plugins folder)
--   **Fabric:** 1.21.1+ (Mods folder, requires Fabric API)
-
----
-
-## **Quick Start**
-
-1.  **Download** `ZyrenAuth-1.0.1.jar` (or `ZyrenAuth-Fabric-1.0.1.jar`).
-2.  Place in your server's `plugins/` (Paper) or `mods/` (Fabric, + Fabric API).
-3.  Start/stop server once to generate `config.json`.
-4.  Edit `config.json` for MySQL/SMTP (optional, but recommended for full features).
-5.  Restart server.
+*   **Paper:** 1.21.1+ (Place in `plugins/` folder)
+*   **Fabric:** 1.21.1+ (Place in `mods/` folder, requires Fabric API)
 
 ---
 
-## **Configuration**
+## ⚡ Quick Start
 
-Edit `config.json` (Paper: `plugins/ZyrenAuth/`; Fabric: `config/zyrenauth/`).
-
--   **`mysqlEnabled`**: Set `true` for MySQL.
--   **`emailFeaturesEnabled`**: Set `true` for email (requires MySQL + SMTP).
--   Fill in your **MySQL credentials** (host, port, user, pass).
--   Fill in your **SMTP email details** (host, port, username, **App Password** for Gmail).
-
----
-
-## **Commands**
-
--   **`/register <pass> <confirm>`**: Create your account.
--   **`/login <pass>`**: Log in.
--   **`/addemail <email>`**: Link email (MySQL & SMTP only).
--   **`/emailconfirm <token>`**: Confirm email.
--   **`/resetpassword`**: Request password reset (MySQL & SMTP only).
--   **`/resetconfirm <token> <new_pass> <confirm>`**: Complete reset.
--   **`/za help`**: Lists all commands.
--   **`/za status`**: Plugin status (op only).
--   **`/za reload`**: Reload config (op only, restart recommended).
+1.  **Download** ZyrenAuth from [Modrinth](https://modrinth.com/plugin/zyrenauth).
+2.  Place the downloaded `.jar` file in your server’s `plugins/` (for Paper) or `mods/` (for Fabric) folder.
+3.  Start and stop your server once. This will generate the `config.json` file at `server_root/plugins/config/zyrenauth/config.json`.
+4.  **Configure `config.json`:**
+    *   Edit the `config.json` file manually, or for an easier experience, use our [**Online Config Generator**](https://zyrenauth.wuaze.com/config-generator.html) to build your configuration.
+    *   Set up MySQL/MariaDB and SMTP email options if desired (highly recommended for full features and security).
+5.  Restart your server and enjoy secure authentication!
 
 ---
 
-## **Support & License**
+## ⚙️ Key Configuration Options (`config.json`)
 
--   **Issues:** [GitHub Repository](https://github.com/Hardik-Verma/ZyrenAuth/issues)
--   **License:** [MIT License](LICENSE)
+**Location:** `server_root/plugins/config/zyrenauth/config.json`
+
+ZyrenAuth's `config.json` is highly customizable. Here are some of the key options:
+
+*   `requirePasswordConfirmation`, `freezeUnverifiedPlayers`, `autoLoginPremiumPlayers`: (boolean) General player experience settings.
+*   `minPasswordLength`, `requireDigit`, `requireLowercase`, `requireUppercase`, `requireSpecialChar`: (int, boolean) Customizable password policy.
+*   `bcryptStrength`: (int) Work factor for password hashing complexity (higher is more secure but slower).
+*   `spawnWorld`, `spawnX`, `spawnY`, `spawnZ`, `spawnYaw`, `spawnPitch`: (String, double, float) Coordinates for the authentication spawn point.
+*   `mysqlEnabled`, `mysqlHost`, `mysqlPort`, `mysqlDatabase`, `mysqlUser`, `mysqlPassword`: (boolean, String) MySQL/MariaDB database connection.
+*   `emailFeaturesEnabled`, `smtpHost`, `smtpPort`, `smtpUsername`, `smtpPassword`, `smtpAuth`, `smtpStarttlsEnable`, `emailSenderAddress`: (boolean, String) Email feature and SMTP server details.
+*   `emailConfirmationExpiryMinutes`, `passwordResetExpiryMinutes`: (int) Token expiry durations.
+*   `webServerUrl`: (String) Base URL for links in email verification/password reset emails.
+*   `maxLoginAttempts`, `lockoutDurationSeconds`: (int, long) Failed login lockout settings (MySQL only).
+*   `antiAccountSharingEnabled`, `ipDeviceLockingEnabled`: (boolean) Advanced security features (MySQL only).
+*   `totpIssuer`: (String) Issuer name displayed in authenticator apps for 2FA.
+
+*For a full list of options and easy setup, use our [Online Config Generator](https://zyrenauth.wuaze.com/config-generator.html)!*
+
+---
+
+## 📜 Commands
+
+*   `/register <password> <confirm>`: Create your account.
+*   `/login <password>`: Log in to your account.
+*   `/addemail <email>`: Link an email to your account (Requires MySQL & SMTP).
+*   `/emailconfirm <token>`: Confirm your email.
+*   `/resetpassword`: Initiate password reset (Requires MySQL & SMTP).
+*   `/resetconfirm <token> <new_password> <confirm>`: Complete password reset.
+*   `/za help`: Lists all commands.
+*   `/za status`: Plugin status (OP only).
+*   `/za reload`: Reload plugin configuration (OP only, server restart recommended for major changes).
+*   `/za 2fa setup`: Set up Two-Factor Authentication.
+*   `/za 2fa confirm <code>`: Confirm 2FA setup or login.
+*   `/za 2fa disable <code>`: Disable 2FA.
+*   `/za 2fa status`: Check 2FA status.
+
+---
+
+## 🤝 Support & License
+
+*   **Issues/Source Code:** [https://github.com/Hardik-Verma/ZyrenAuth](https://github.com/Hardik-Verma/ZyrenAuth)
+*   **License:** [MIT License](LICENSE)
